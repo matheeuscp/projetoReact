@@ -27,7 +27,7 @@ export default class Menu extends Component
                         <b.Image src="http://placehold.it/50x50" roundedCircle />
                     </b.Col>
                     <b.NavDropdown title="" id="basic-nav-dropdown" className="teste">
-                        <b.NavDropdown.Item href="#action/3.1">Logout</b.NavDropdown.Item>
+                        <b.NavDropdown.Item href="/logout">Logout</b.NavDropdown.Item>
                     </b.NavDropdown>
                 </b.Container>
             </b.Navbar>

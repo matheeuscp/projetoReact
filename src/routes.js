@@ -2,6 +2,9 @@ import React from 'react';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 import {isAuthenticated} from './auth';
 import Login from './Login';
+import Cadastro from './Cadastro';
+import Logout from './Logout';
+import App from './App';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} 
@@ -18,7 +21,9 @@ const Routes = () => (
     <BrowserRouter>
         <Switch>
             <Route exact path="/login" component={Login}/>
-            <PrivateRoute exact path="/app" component={() => <h1>vc esta logado</h1>}/>
+            <Route exact path="/cadastro" component={Cadastro}/>
+            <PrivateRoute exact path="/app" component={App}/>
+            <PrivateRoute  path="/logout" component={Logout}/>
         </Switch>
     </BrowserRouter>
 )

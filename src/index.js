@@ -5,9 +5,9 @@ import * as serviceWorker from './serviceWorker';
 import 'react-push-menu/styles/component.css';
 import './css/login.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import Routes from './routes';
 ReactDOM.render(
-    <App/>
-
+    <Routes/>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
