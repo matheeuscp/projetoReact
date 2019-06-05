@@ -1,68 +1,9 @@
-.login-box {
-    position : absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background: white;
-    box-shadow: 5px 10px 8px 10px #4f4b4b;
-    width: 300px;
-    padding: 1em;
-}
-
-.login-box input {
-    display: block;
-    border-radius: 5px;
-    margin: 1em auto;
-    border: 1px solid #dbdbdb;
-}
-
-.login-box input[type='submit'] {
-    background: #3897f0;
-    border-color: #3897f0;
-    color: white; 
-    cursor: pointer;   
-    border-radius: 0px;
-    width: 100%;
-}
 
 @import url("https://fonts.googleapis.com/css?family=Raleway");
 * {
   box-sizing: border-box;
 }
-/* .spinner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height:60px;
-  width:60px;
-  margin:0px auto;
-  -webkit-animation: rotation .6s infinite linear;
-  -moz-animation: rotation .6s infinite linear;
-  -o-animation: rotation .6s infinite linear;
-  animation: rotation .6s infinite linear;
-  border-left:6px solid rgba(0,174,239,.15);
-  border-right:6px solid rgba(0,174,239,.15);
-  border-bottom:6px solid rgba(0,174,239,.15);
-  border-top:6px solid rgba(0,174,239,.8);
-  border-radius:100%;
-}
 
-@-webkit-keyframes rotation {
-  from {-webkit-transform: rotate(0deg);}
-  to {-webkit-transform: rotate(359deg);}
-}
-@-moz-keyframes rotation {
-  from {-moz-transform: rotate(0deg);}
-  to {-moz-transform: rotate(359deg);}
-}
-@-o-keyframes rotation {
-  from {-o-transform: rotate(0deg);}
-  to {-o-transform: rotate(359deg);}
-}
-@keyframes rotation {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(359deg);}
-} */
 
 
 .copyright {
@@ -124,7 +65,7 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700");
 body, html {
   height: 100%;
-  background: linear-gradient(to bottom right, #75618b, #383939);
+  background: #bab9b9;
 }
 
 .button.type2 {
@@ -149,3 +90,29 @@ body, html {
   .button.type2.type2:hover:after {
     transform: scale(1);
   }
+  .conteudo{
+    background: linear-gradient(to bottom right, #75618b, #383939);
+    padding-bottom:40px;
+    box-shadow: 1px 6px 9px 7px #4f4b4b;
+  }
+
+  .divStyle {
+    color: #140083;
+    height: 200px;
+    margin: 20px auto;
+    background: linear-gradient(to bottom, rgb(255, 114, 0), #e99518);
+    border-radius: 10px;
+    width:400px;
+    box-shadow: rgb(129, 127, 127) 1px -1px 9px -3px;
+}
+
+.divStyle2{
+    color: white;
+    height: 200px;
+    margin: 20px auto;
+    background: #993399;
+    border-radius: 10px;
+    width:400px;
+    box-shadow: rgb(129, 127, 127) 1px -1px 9px -3px;
+
+}

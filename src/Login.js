@@ -24,11 +24,13 @@ export default class Login extends Component
                     localStorage.setItem('auth-token', token);
                     this.props.history.push('/app');
                 }else{
-                    throw new Error('login incorreto');
+                    throw new Error("login incorreto");
                 }
             })
             .catch(error => {
-                this.setState({msg:error.message})
+                if(error.response.status != 200){
+                    this.setState({msg:'Login incorreto'});
+                }
                 return;
             });
     }
@@ -44,12 +46,13 @@ export default class Login extends Component
     render(){ 
         return (
             <div>
+                <style>{'body { background: linear-gradient(to bottom right, #75618b, #383939); }'}</style>
                 <div className="login-box center" style={{'textAlign':'center'}}>
-                    <h1 className="header-logo center">Login</h1>
+                    <img src={require("./img/logo.png")} width="200px"/>
                     <span>{this.state.msg}</span>
                     <form onSubmit={this.enviaForm.bind(this)} method="post"> 
-                        <input type="text" className="form-control" value={this.state.email} onChange={this.setEmail.bind(this)}/>
-                        <input type="password" className="form-control " value={this.state.password} onChange={this.setSenha.bind(this)}/>
+                        <input type="text" className="form-control" value={this.state.email} placeholder="digite seu email" onChange={this.setEmail.bind(this)}/>
+                        <input type="password" className="form-control " value={this.state.password} placeholder="digite sua senha" onChange={this.setSenha.bind(this)}/>
                         <button className="button type1">
                             Logar
                         </button>
