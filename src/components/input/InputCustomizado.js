@@ -15,7 +15,8 @@ export default class InputCustomizado extends Component{
 	render() {
 		return (
 			<div className="pure-control-group">
-			  <input onKeyUp={this.digitando.bind(this)} style={{boxShadow: '0 0 0 0', outline:'1',borderRadius:'0px', border:`${this.state.borda}`}} className="form-control" id={this.props.id} type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value}  onChange={this.props.onChange}/>                  
+				<small style={{float:'left',fontWeight:'bold'}}>{this.props.labels}</small>
+				<input onKeyUp={this.digitando.bind(this)} style={{boxShadow: '0 0 0 0', outline:'1',borderRadius:'0px', border:`${this.state.borda}`}} className="form-control" id={this.props.id} type={this.props.type} name={this.props.name} placeholder={this.props.placeholder} value={this.props.value}  onChange={this.props.onChange}/>                  
 			</div>			
 		);
 	}

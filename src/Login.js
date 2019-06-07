@@ -48,7 +48,6 @@ class FormLogin extends Component
 
                 if(response.statusText == 'OK')
                 {
-
                     const token = response.data.access_token;
                     localStorage.setItem('auth-token', token);
                     history.push('/app');
@@ -85,8 +84,8 @@ class FormLogin extends Component
                     <img src={require("./img/logo.png")} width="200px"/>
                     <span>{this.state.msg}</span>
                     <form onSubmit={this.Login.bind(this)} method="post"> 
-                        <InputCustomizado id="email" type="email" name="email" value={this.state.email} placeholder="digite seu email" onChange={this.setEmail.bind(this)}/>     
-                        <InputCustomizado id="senha" type="password" name="password" value={this.state.password} placeholder="digite sua senha" onChange={this.setSenha.bind(this)}/>     
+                        <InputCustomizado labels="Email" id="email" type="email" name="email" value={this.state.email} placeholder="digite seu email" onChange={this.setEmail.bind(this)}/>     
+                        <InputCustomizado labels="Senha" id="senha" type="password" name="password" value={this.state.password} placeholder="digite sua senha" onChange={this.setSenha.bind(this)}/>     
                         <button className="button type1">
                             Logar
                         </button>
@@ -104,7 +103,7 @@ export default class Login extends Component {
     render(){ 
         return (
             <div>
-                <Loading/>,
+                <Loading/>
                 <FormLogin/>
             </div>
     );
