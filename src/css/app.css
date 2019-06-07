@@ -4,8 +4,6 @@
   box-sizing: border-box;
 }
 
-
-
 .copyright {
   position: absolute;
   bottom: 0;
@@ -116,3 +114,9 @@ body, html {
     box-shadow: rgb(129, 127, 127) 1px -1px 9px -3px;
 
 }
+
+textarea:focus, input:focus, select:focus {
+  box-shadow: 0 0 0 0;
+  border: 0 none;
+  outline: 0;
+} 

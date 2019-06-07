@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { createBrowserHistory }  from 'history';
 
 export default class Logout extends Component{
     componentWillMount(){
