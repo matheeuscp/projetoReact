@@ -7,7 +7,9 @@ import './css/login.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Routes from './routes';
 ReactDOM.render(
-    <Routes/>
+    <BrowserRouter>
+    <App />
+  </BrowserRouter>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

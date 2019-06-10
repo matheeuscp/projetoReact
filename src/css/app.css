@@ -92,6 +92,8 @@ body, html {
     background: linear-gradient(to bottom right, #75618b, #383939);
     padding-bottom:40px;
     box-shadow: 1px 6px 9px 7px #4f4b4b;
+    margin-top: 50px;
+    height: 100%;
   }
 
   .divStyle {

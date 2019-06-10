@@ -19,9 +19,7 @@ export default class Slide extends Component  {
     render(){
         
         return (
-            <b.Container>
-                <b.Row className='conteudo'>
-                    <b.Col md={{ span: 6, offset: 3 }}>
+           <div>
                         <h3 style={{textAlign:"center", marginTop:'40px'}}>Meus Cartões</h3>
                             <b.Carousel style={teste}>
                                     <b.Carousel.Item>
@@ -47,11 +45,7 @@ export default class Slide extends Component  {
                             </b.Carousel.Item>
                             
                         </b.Carousel>
-                    {/* <SimpleLineChart /> */}
-                    </b.Col>
-                </b.Row>
-                
-            </b.Container>
+                    </div>
         );
     }
 }
