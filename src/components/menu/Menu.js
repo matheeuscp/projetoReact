@@ -7,7 +7,7 @@ export default class Menu extends Component
         return (
             <b.Navbar bg="dark" expand="lg"  variant="dark">
                 <b.Container>
-                <b.Navbar.Brand href="#home">React-Bootstrap</b.Navbar.Brand>
+                <b.Navbar.Brand href="/cartao">React-Bootstrap</b.Navbar.Brand>
                 <b.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <b.Navbar.Collapse id="basic-navbar-nav">
                     <b.Nav className="mr-auto">

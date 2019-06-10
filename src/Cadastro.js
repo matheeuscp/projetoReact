@@ -33,7 +33,6 @@ export default class Cadastro extends Component
             nickname: this.state.nickname,
             cpf     : this.state.cpf
         }
-
         PubSub.publish("limpa-erros",{});    
         api.post('/cadastrar', body,  { responseType: 'json' })
             .then(response => {

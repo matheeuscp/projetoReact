@@ -1,45 +1,145 @@
-import React, {Component, PureComponent } from 'react';
-import * as b from 'react-bootstrap';
-import '../../moip';
+import React from 'react';
+import Card from 'react-credit-cards';
+import {
+  formatCreditCardNumber,
+  formatCVC,
+  formatExpirationDate,
+  formatFormData,
+} from './utils';
+import './styles.css';
 
+import 'react-credit-cards/es/styles-compiled.css';
 
-const divStyle = {
-    color: '#140083',
-    height: '200px',
-    'margin': '20px auto',
-    background: 'linear-gradient(to bottom, rgb(255, 114, 0), #e99518)',
-    'borderRadius': '10px',
-    width:'400px'
-}
+export default class Cartao extends React.Component {
+  state = {
+    number: '',
+    name: '',
+    expiry: '',
+    cvc: '',
+    issuer: '',
+    focused: '',
+    formData: null,
+  };
 
-const divStyle2 = {
-    color: 'black',
-    height: '200px',
-    'margin': '20px auto',
-    background: '#993399',
-    'borderRadius': '10px',
-    width:'400px',
-}
-
-const teste = {
-    'textAling' : 'center'
-}
-
-const link = {
-    color:'white',
-    fontWeight:'bold'
-}
-
-export default class Cartao extends Component  {
-    render(){
-        return (
-                <div  style={divStyle} >
-                    <b.Image src={require("../../img/logo-itau.png")} width="100px"/>
-                    <p style={{margin:'20px', color:'white', float: 'right',fontWeight:'bold'}}>1234 .... .... 1121</p>
-                    <div style={{textAlign: 'center', position: 'absolute', bottom: '40px', height: '2.5rem', width:'400px' }}>
-                        <a href='#' style={link}>ver extrato</a>
-                    </div>
-                </div>         
-        );
+  handleCallback = ({ issuer }, isValid) => {
+    if (isValid) {
+      this.setState({ issuer });
     }
+  };
+
+  handleInputFocus = ({ target }) => {
+    this.setState({
+      focused: target.name,
+    });
+  };
+
+  handleInputChange = ({ target }) => {
+    if (target.name === 'number') {
+      target.value = formatCreditCardNumber(target.value);
+    } else if (target.name === 'expiry') {
+      target.value = formatExpirationDate(target.value);
+    } else if (target.name === 'cvc') {
+      target.value = formatCVC(target.value);
+    }
+
+    this.setState({ [target.name]: target.value });
+  };
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const { issuer } = this.state;
+    const formData = [...e.target.elements]
+      .filter(d => d.name)
+      .reduce((acc, d) => {
+        acc[d.name] = d.value;
+        return acc;
+      }, {});
+
+    this.setState({ formData });
+    this.form.reset();
+  };
+
+  render() {
+    const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
+
+    return (
+      <div key="Payment">
+        <div className="App-payment">
+          <h1>Adicionar cartão</h1>
+          <h4>adicione um cartão à sua conta</h4>
+          <Card
+            number={number}
+            name={name}
+            expiry={expiry}
+            cvc={cvc}
+            focused={focused}
+            callback={this.handleCallback}
+          />
+          <form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <input
+                type="tel"
+                name="number"
+                className="form-control"
+                placeholder="Número do cartão"
+                pattern="[\d| ]{16,22}"
+                required
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                type="text"
+                name="name"
+                className="form-control"
+                placeholder="Nome"
+                required
+                onChange={this.handleInputChange}
+                onFocus={this.handleInputFocus}
+              />
+            </div>
+            <div className="row">
+              <div className="col-6">
+                <input
+                  type="tel"
+                  name="expiry"
+                  className="form-control"
+                  placeholder="Validade"
+                  pattern="\d\d/\d\d"
+                  required
+                  onChange={this.handleInputChange}
+                  onFocus={this.handleInputFocus}
+                />
+              </div>
+              <div className="col-6">
+                <input
+                  type="tel"
+                  name="cvc"
+                  className="form-control"
+                  placeholder="CVC"
+                  pattern="\d{3,4}"
+                  required
+                  onChange={this.handleInputChange}
+                  onFocus={this.handleInputFocus}
+                />
+              </div>
+            </div>
+            <input type="hidden" name="issuer" value={issuer} />
+            <div className="form-actions">
+              <button className="btn btn-primary btn-block">Cadastrar</button>
+            </div>
+          </form>
+          {formData && (
+            <div className="App-highlight">
+              {formatFormData(formData).map((d, i) => <div key={i}>{d}</div>)}
+            </div>
+          )}
+        </div>
+        <div className="App-credits">
+          Made with ❤️ at <a href="https://amaro.com/">AMARO</a>.
+        </div>
+      </div>
+    );
+  }
 }
