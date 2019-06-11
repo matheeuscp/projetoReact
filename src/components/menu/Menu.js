@@ -12,7 +12,7 @@ export default class Menu extends Component
                 <b.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <b.Navbar.Collapse id="basic-navbar-nav">
                     <b.Nav className="mr-auto">
-                    <b.Nav.Link><NavLink to="home">Home</NavLink></b.Nav.Link>
+                    <b.Nav.Link><NavLink to="app">Home</NavLink></b.Nav.Link>
                     <b.Nav.Link><NavLink to="cartao">Link</NavLink></b.Nav.Link>
                     <b.NavDropdown title="Dropdown" id="basic-nav-dropdown">
                         <b.NavDropdown.Item href="#action/3.1">Action</b.NavDropdown.Item>
