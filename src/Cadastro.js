@@ -7,7 +7,6 @@ import InputCustomizado from './components/input/InputCustomizado';
 import api from './services/api';
 import TratadorErros from  './TratadorErros';
 import PubSub from 'pubsub-js';
-import { createBrowserHistory }  from 'history';
 import Complete from './components/complete/Complete';
 import Loading from './components/load/Load';
 
@@ -22,8 +21,6 @@ export default class Cadastro extends Component
     Cadastrar(event){
         event.preventDefault();
         
-        const history = createBrowserHistory();
-
         $('#loading-full').toggle();
 
         var body = {

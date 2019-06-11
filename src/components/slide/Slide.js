@@ -1,8 +1,8 @@
-import React, {Component, PureComponent } from 'react';
+import React, {Component} from 'react';
 import * as b from 'react-bootstrap';
-import SimpleLineChart from '../../Grafico';
+// import SimpleLineChart from '../../Grafico';
 import '../../moip';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 import '../../css/login.css';
 
 

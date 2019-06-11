@@ -6,7 +6,6 @@ import Cadastro from './Cadastro';
 import Logout from './Logout';
 import App from './App';
 import Cartao from './components/cartao/Cartao';
-import Menu from './components/menu/Menu';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} 

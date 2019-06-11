@@ -2,15 +2,16 @@ import React from 'react';
 import Card from 'react-credit-cards';
 import Menu from '../menu/Menu';
 import * as b from 'react-bootstrap';
-import {
-  formatCreditCardNumber,
-  formatCVC,
-  formatExpirationDate,
-  formatFormData,
-} from './utils';
+import {formatCreditCardNumber,formatCVC,formatExpirationDate} from './utils';
+import $ from 'jquery';
+import api from '../../services/api';
+import TratadorErros from  '../../TratadorErros';
+import PubSub from 'pubsub-js';
 import './styles.css';
 import 'react-credit-cards/es/styles-compiled.css';
-
+const link = {
+    'color':'white',
+}
 export default class Cartao extends React.Component {
 	state = {
 		number: '',
@@ -46,16 +47,41 @@ export default class Cartao extends React.Component {
 		this.setState({ [target.name]: target.value });
 	};
 
+	
 	handleSubmit = e => {
 		e.preventDefault();
-			const { issuer } = this.state;
-			const formData = [...e.target.elements]
-			.filter(d => d.name)
-			.reduce((acc, d) => {
-				acc[d.name] = d.value;
-				return acc;
-			}, {});
-		this.setState({ formData });
+			console.log('asdad');
+				
+		$('#loading-full').toggle();
+
+		var body = {
+			email   : this.state.emailCad,
+			password: this.state.passwordCad,
+			name    : this.state.nome,
+			nickname: this.state.nickname,
+			cpf     : this.state.cpf
+		}
+		PubSub.publish("limpa-erros",{});    
+		api.post('/cadastrar', body,  { responseType: 'json' })
+			.then(response => {
+				$('#loading-full').hide();
+				
+				if(response.statusText == 'OK')
+				{
+					this.setState({nome:'',emailCad:'',passwordCad:'',nickname:'', cpf:''});
+					$('.complete').show();
+					setTimeout(function(){  $('.complete').hide(); }, 1700);
+				}else
+				{
+					new TratadorErros().publicaErros(response.responseJSON);
+					throw new Error("login incorreto");
+				}
+			})
+			.catch(error => {
+				$('#loading-full').toggle();
+				console.log(error);return;
+			});
+
 		this.form.reset();
 	};
 
@@ -68,8 +94,8 @@ export default class Cartao extends React.Component {
 					<b.Row className='conteudo'>
 						<b.Col md={{ span: 6, offset: 3 }}>
 							<div className="App-payment">
-								<h1>Adicionar cartão</h1>
-								<h4>adicione um cartão à sua conta</h4>
+								<h1 style={{color:'white'}}>Adicionar cartão</h1>
+								<h4 style={{color:'white'}}>adicione um cartão à sua conta</h4>
 								<Card
 									number={number}
 									name={name}
@@ -133,11 +159,6 @@ export default class Cartao extends React.Component {
 										<button className="btn btn-primary btn-block">Cadastrar</button>
 									</div>
 								</form>
-								{formData && (
-								<div className="App-highlight">
-									{formatFormData(formData).map((d, i) => <div key={i}>{d}</div>)}
-								</div>
-								)}
 							</div>
 				{/* <div className="App-credits">
 				Made with ❤️ at <a href="https://amaro.com/">AMARO</a>.
