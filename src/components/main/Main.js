@@ -1,18 +1,23 @@
-import React from "react";
-import Cartao from '../../components/cartao/Cartao';
+import React, {Component} from "react";
+import CadCartao from '../../components/cartao/CadCartao';
 import Slide from '../../components/slide/Slide';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
 
-const Main = () => (
-  <main>
-      <div>
-            <Switch>
-              <Route exact path='/app' component={Slide}/>
-              <Route  exact path='/cartao' component={Cartao}/>
-            </Switch>           
-      </div>
-      
-  </main>  
-);
+class Main extends Component{
+  render(){
+      return (
+        <main>
+          <div>
+                <Switch>
+                
+                  <Route exact path='/app' component={Slide}/>
+                  <Route  exact path='/cartao' component={CadCartao}/>
+                </Switch>           
+          </div>
+          
+      </main>  
+      )
+  }
+} 
 
 export default Main;

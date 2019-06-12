@@ -97,24 +97,17 @@ body, html {
   }
 
   .divStyle {
-    color: #140083;
     height: 200px;
     margin: 20px auto;
-    background: linear-gradient(to bottom, rgb(255, 114, 0), #e99518);
+    background: transparent;
     border-radius: 10px;
-    width:400px;
-    box-shadow: rgb(129, 127, 127) 1px -1px 9px -3px;
 }
 
 .divStyle2{
-    color: white;
     height: 200px;
     margin: 20px auto;
-    background: #993399;
+    background: transparent;
     border-radius: 10px;
-    width:400px;
-    box-shadow: rgb(129, 127, 127) 1px -1px 9px -3px;
-
 }
 
 textarea:focus, input:focus, select:focus {

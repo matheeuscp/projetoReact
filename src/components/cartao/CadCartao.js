@@ -9,10 +9,13 @@ import TratadorErros from  '../../TratadorErros';
 import PubSub from 'pubsub-js';
 import './styles.css';
 import 'react-credit-cards/es/styles-compiled.css';
+import Complete from '../complete/Complete';
+import Loading from '../load/Load';
 const link = {
     'color':'white',
 }
-export default class Cartao extends React.Component {
+export default class CadCartao extends React.Component {
+	
 	state = {
 		number: '',
 		name: '',
@@ -50,25 +53,25 @@ export default class Cartao extends React.Component {
 	
 	handleSubmit = e => {
 		e.preventDefault();
-			console.log('asdad');
-				
+		const token = localStorage.getItem('auth-token');
+
 		$('#loading-full').toggle();
 
 		var body = {
-			email   : this.state.emailCad,
-			password: this.state.passwordCad,
-			name    : this.state.nome,
-			nickname: this.state.nickname,
-			cpf     : this.state.cpf
+			nome_cartao   : this.state.name,
+			numero_cartao : this.state.number.trim(),
+			vencimento    : this.state.expiry,
+			cod_seguranca : this.state.cvc,
+			user_id       :''
 		}
 		PubSub.publish("limpa-erros",{});    
-		api.post('/cadastrar', body,  { responseType: 'json' })
+		api.post(`/cartao/${token}`, body,  { responseType: 'json' })
 			.then(response => {
 				$('#loading-full').hide();
 				
 				if(response.statusText == 'OK')
 				{
-					this.setState({nome:'',emailCad:'',passwordCad:'',nickname:'', cpf:''});
+					this.setState({name:'',number:'',passwordCad:'',expiry:'', cvc:''});
 					$('.complete').show();
 					setTimeout(function(){  $('.complete').hide(); }, 1700);
 				}else
@@ -91,6 +94,8 @@ export default class Cartao extends React.Component {
 			<div key="Payment">
 				<Menu/>
 				<b.Container>
+					<Loading/>
+					<Complete/>
 					<b.Row className='conteudo'>
 						<b.Col md={{ span: 6, offset: 3 }}>
 							<div className="App-payment">

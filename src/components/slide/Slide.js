@@ -4,47 +4,71 @@ import * as b from 'react-bootstrap';
 import '../../moip';
 // import {Link} from 'react-router-dom';
 import '../../css/login.css';
-
+import Card from 'react-credit-cards';
+import api from '../../services/api';
+import Loading from '../load/Load';
+import $ from 'jquery';
+import Carregando from '../load/Carregando';
 
 const teste = {
-    'textAling' : 'center'
+    'textAling' : 'center',
 }
 
 const link = {
     'color':'white',
     'fontWeight':'bold'
 }
-
+const carousel = {
+    'minHeight':'200px',
+    'padding' : '50px 0'
+}
 export default class Slide extends Component  {
+    state= {cartaos: [],load:true}
+
+    componentDidMount(){
+        const token = localStorage.getItem('auth-token');
+        $('#loading-full').show();
+        api.get(`/cartao/${token}`)
+        .then(response => {
+            $('#loading-full').hide();
+            this.setState({
+                cartaos: response.data.cartaos,
+                load:false
+            });
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+    
     render(){
+        let data;
         
-        return (
+        if(this.state.load){
+            data=<Carregando/>
+        }else{
+            data = 
             <div>
-                <h3 style={{textAlign:"center", marginTop:'40px'}}>Meus Cartões</h3>
+            <h1 style={{color:'white'}}>Meus cartões</h1>
                 <b.Carousel style={teste}>
-                    <b.Carousel.Item>
-                        <div  className='divStyle' >
-                            <b.Image src={require("../../img/logo-itau.png")} width="100px"/>
-                            <p style={{margin:'20px', color:'white', float: 'right',fontWeight:'bold'}}>1234 .... .... 1121</p>
-                            <div style={{textAlign: 'center', position: 'absolute', bottom: '40px', height: '2.5rem', width:'400px' }}>
-                                <a href='#' style={link}>ver extrato</a>
-                            </div>
-                        </div>
-                            
+                
+                {this.state.cartaos.map(cartao =>(
+                    <b.Carousel.Item key={cartao.id} style={teste}>
+                    
+                    <Card
+                    number={cartao.numero_cartao}
+                    name={cartao.nome_cartao}
+                    expiry={cartao.vencimento}
+                    />
                     </b.Carousel.Item>
-                    <b.Carousel.Item>
-                        <div  className='divStyle2'>
-                            <div>
-                                <b.Image src={require("../../img/logo-nubank.png")} width="100px"/>
-                                <p style={{margin:'20px', color:'white', float: 'right',fontWeight:'bold'}}>1234 .... .... 1121</p>
-                            </div>
-                            <div style={{textAlign: 'center', position: 'absolute', bottom: '40px', height: '2.5rem', width:'400px' }}>
-                                <a href='#' style={link}>ver extrato</a>
-                            </div>
-                        </div>
-                    </b.Carousel.Item>
+                    ))}
                 </b.Carousel>
             </div>
-        );
+        }
+                
+        return(
+            <div style={carousel}>
+                {data}
+            </div>
+        )
     }
 }
