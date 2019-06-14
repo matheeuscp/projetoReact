@@ -4,7 +4,7 @@ import Main from './components/main/Main';
 import "react-bootstrap/dist/react-bootstrap.min.js";
 import './css/app.css';
 import * as b from 'react-bootstrap';
-import Loading from './components/load/Load';
+import MenuFooter from './components/menuFooter/MenuFooter';
 
 
 class App extends Component{
@@ -18,12 +18,12 @@ class App extends Component{
 
                     <b.Row className='conteudo'>
                         <b.Col md={{ span: 6, offset: 3 }}>
-                        
-                            <Main/>
-                            
+                                    <Main/>
                             </b.Col>
                         </b.Row>
-                </b.Container>
+                    </b.Container>
+                <MenuFooter/>                   
+
             </div>
         )
     }

@@ -9,10 +9,9 @@ class Main extends Component{
         <main>
           <div>
                 <Switch>
-                
                   <Route exact path='/app' component={Slide}/>
                   <Route  exact path='/cartao' component={CadCartao}/>
-                </Switch>           
+                </Switch>  
           </div>
           
       </main>  

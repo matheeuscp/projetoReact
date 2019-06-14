@@ -9,6 +9,7 @@ import api from '../../services/api';
 import Loading from '../load/Load';
 import $ from 'jquery';
 import Carregando from '../load/Carregando';
+import { NavLink } from 'react-router-dom';
 
 const teste = {
     'textAling' : 'center',
@@ -53,12 +54,14 @@ export default class Slide extends Component  {
                 
                 {this.state.cartaos.map(cartao =>(
                     <b.Carousel.Item key={cartao.id} style={teste}>
-                    
-                    <Card
-                    number={cartao.numero_cartao}
-                    name={cartao.nome_cartao}
-                    expiry={cartao.vencimento}
-                    />
+                    <NavLink to="detalhe">
+                        <Card
+                        cvc=''
+                        number={cartao.numero_cartao}
+                        name={cartao.nome_cartao}
+                        expiry={cartao.vencimento}
+                        />
+                    </NavLink>
                     </b.Carousel.Item>
                     ))}
                 </b.Carousel>

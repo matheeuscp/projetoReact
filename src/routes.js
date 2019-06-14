@@ -6,6 +6,8 @@ import Cadastro from './Cadastro';
 import Logout from './Logout';
 import App from './App';
 import CadCartao from './components/cartao/CadCartao';
+import Detalhe from './components/detalhe/Detalhe';
+import UserInfo from './components/userInfo/UserInfo';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
     <Route {...rest} 
@@ -25,7 +27,9 @@ const Routes = () => (
             <Route exact path="/login" component={Login}/>
             <Route exact path="/cadastro" component={Cadastro}/>
             <PrivateRoute exact path="/app" component={App}/>
+            <PrivateRoute exact path="/detalhe" component={Detalhe}/>
             <PrivateRoute exact path="/cartao" component={CadCartao}/>
+            <PrivateRoute exact path="/info" component={UserInfo}/>
             <PrivateRoute  path="/logout" component={Logout}/>
         </Switch>
     </BrowserRouter>
