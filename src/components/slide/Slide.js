@@ -11,6 +11,7 @@ import api from '../../services/api';
 import Loading from '../load/Load';
 import $ from 'jquery';
 import Carregando from '../load/Carregando';
+import { NavLink } from 'react-router-dom';
 
 const teste = {
     'textAling' : 'center',
@@ -55,6 +56,7 @@ export default class Slide extends Component  {
                 
                 {this.state.cartaos.map(cartao =>(
                     <b.Carousel.Item key={cartao.id} style={teste}>
+<<<<<<< HEAD
                     
                     <NavLink to={"detalhe/"+cartao.id}>
                         <Card
@@ -62,6 +64,14 @@ export default class Slide extends Component  {
                             number={cartao.numero_cartao}
                             name={cartao.nome_cartao}
                             expiry={cartao.vencimento}
+=======
+                    <NavLink to="detalhe">
+                        <Card
+                        cvc=''
+                        number={cartao.numero_cartao}
+                        name={cartao.nome_cartao}
+                        expiry={cartao.vencimento}
+>>>>>>> a689d050ac5cc24bd1ac85146d259113f5c53cce
                         />
                     </NavLink>
                     </b.Carousel.Item>

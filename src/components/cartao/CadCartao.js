@@ -11,6 +11,8 @@ import './styles.css';
 import 'react-credit-cards/es/styles-compiled.css';
 import Complete from '../complete/Complete';
 import Loading from '../load/Load';
+import MenuFooter from '../menuFooter/MenuFooter';
+
 const link = {
     'color':'white',
 }
@@ -91,13 +93,14 @@ export default class CadCartao extends React.Component {
   	render() {
 		const { name, number, expiry, cvc, focused, issuer, formData } = this.state;
 		return (
-			<div key="Payment">
+			<div key="Payment" >
 				<Menu/>
-				<b.Container>
+				<b.Container style={{width:'100%'}}>
 					<Loading/>
 					<Complete/>
 					<b.Row className='conteudo'>
 						<b.Col md={{ span: 6, offset: 3 }}>
+<<<<<<< HEAD
 							<div className="App-payment">
 								<h1 style={{color:'white'}}>Adicionar cartão</h1>
 								<h4 style={{color:'white'}}>adicione um cartão à sua conta</h4>
@@ -110,6 +113,19 @@ export default class CadCartao extends React.Component {
 										focused={focused}
 										callback={this.handleCallback}
 									/>
+=======
+							<div className="App-payment" style={{padding:'0'}}>
+								<h2 style={{color:'black',margin:0}}>Adicionar cartão</h2>
+								<h6 style={{color:'black', margin:'0 auto','textAlign':'center'}}>adicione um cartão à sua conta</h6>
+								<Card
+									number={number}
+									name={name}
+									expiry={expiry}
+									cvc={cvc}
+									focused={focused}
+									callback={this.handleCallback}
+								/>
+>>>>>>> a689d050ac5cc24bd1ac85146d259113f5c53cce
 								<form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
 									<div className="form-group">
 										<input
@@ -172,6 +188,7 @@ export default class CadCartao extends React.Component {
 						</b.Col>
 					</b.Row>
 				</b.Container>
+				<MenuFooter/>
 			</div>
 		);
 	}

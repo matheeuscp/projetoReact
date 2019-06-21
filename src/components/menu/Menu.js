@@ -6,8 +6,9 @@ export default class Menu extends Component
 {
     render(){
         return (
-            <b.Navbar bg="dark" expand="lg"  variant="dark">
+            <b.Navbar id="menu" expand="lg"  variant="dark">
                 <b.Container>
+<<<<<<< HEAD
                 <b.Navbar.Brand href="/cartao">React-Bootstrap</b.Navbar.Brand>
                 <b.Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <b.Navbar.Collapse id="basic-navbar-nav">
@@ -30,8 +31,14 @@ export default class Menu extends Component
                     <b.NavDropdown title="" id="basic-nav-dropdown" className="teste">
                         <b.NavDropdown.Item href="/logout">Logout</b.NavDropdown.Item>
                     </b.NavDropdown>
+=======
+                    <img id="logo" src={require("../../img/logo.png")} width="60px"/> 
+>>>>>>> a689d050ac5cc24bd1ac85146d259113f5c53cce
                 </b.Container>
             </b.Navbar>
         )
     }
 }
+// <b.NavDropdown title="" id="basic-nav-dropdown" className="teste">
+//                         <b.NavDropdown.Item href="/logout">Logout</b.NavDropdown.Item>
+//                     </b.NavDropdown>

@@ -8,7 +8,14 @@ class Main extends Component{
       return (
         <main>
           <div>
+<<<<<<< HEAD
                 
+=======
+                <Switch>
+                  <Route exact path='/app' component={Slide}/>
+                  <Route  exact path='/cartao' component={CadCartao}/>
+                </Switch>  
+>>>>>>> a689d050ac5cc24bd1ac85146d259113f5c53cce
           </div>
           
       </main>  
