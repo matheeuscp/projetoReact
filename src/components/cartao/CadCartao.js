@@ -101,14 +101,15 @@ export default class CadCartao extends React.Component {
 							<div className="App-payment">
 								<h1 style={{color:'white'}}>Adicionar cartão</h1>
 								<h4 style={{color:'white'}}>adicione um cartão à sua conta</h4>
-								<Card
-									number={number}
-									name={name}
-									expiry={expiry}
-									cvc={cvc}
-									focused={focused}
-									callback={this.handleCallback}
-								/>
+								
+									<Card
+										number={number}
+										name={name}
+										expiry={expiry}
+										cvc={cvc}
+										focused={focused}
+										callback={this.handleCallback}
+									/>
 								<form ref={c => (this.form = c)} onSubmit={this.handleSubmit}>
 									<div className="form-group">
 										<input

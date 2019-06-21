@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import Menu from '../menu/Menu';
 import "react-bootstrap/dist/react-bootstrap.min.js";
 import * as b from 'react-bootstrap';
- 
+import Menu from '../menu/Menu';
 export default class Detalhe extends Component {
     render(){
         return(
             <div>
-              <Menu/>
+                <Menu/>
+				<b.Container>
               <b.Container style={{background: 'white', width: '100%', height:'100%', 'marginTop':'60px', boxShadow: '5px 5px 20px #888888', textAlign:'center', paddingBottom:'10px'}}>
                 <h1>Saldo e extrato</h1>
                 <b.Row>
@@ -51,6 +51,7 @@ export default class Detalhe extends Component {
                             </tbody>
                         </b.Table>
                 </b.Row>
+              </b.Container>
               </b.Container>
             </div>
         );

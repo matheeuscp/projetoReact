@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import * as b from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+
 // import SimpleLineChart from '../../Grafico';
 import '../../moip';
 // import {Link} from 'react-router-dom';
@@ -54,11 +56,14 @@ export default class Slide extends Component  {
                 {this.state.cartaos.map(cartao =>(
                     <b.Carousel.Item key={cartao.id} style={teste}>
                     
-                    <Card
-                    number={cartao.numero_cartao}
-                    name={cartao.nome_cartao}
-                    expiry={cartao.vencimento}
-                    />
+                    <NavLink to={"detalhe/"+cartao.id}>
+                        <Card
+                            cvc=''
+                            number={cartao.numero_cartao}
+                            name={cartao.nome_cartao}
+                            expiry={cartao.vencimento}
+                        />
+                    </NavLink>
                     </b.Carousel.Item>
                     ))}
                 </b.Carousel>
